@@ -5,9 +5,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,13 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         EditText numberField = (EditText) findViewById(R.id.numberField);
 
-        if(!numberField.getText().toString().isEmpty()){
+        String message;
+        if(numberField.getText().toString().isEmpty()) {
+            message = "Please enter a number!";
+        } else {
 
             Number numberVerificator = new Number();
 
             numberVerificator.number = Integer.parseInt(numberField.getText().toString());
 
-            String message = "";
+
             if(numberVerificator.isSquare()){
                 if(numberVerificator.isTriangular()){
                     message = numberVerificator.number + " ís both triangular and square.";
@@ -55,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
         }
 
-
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override
